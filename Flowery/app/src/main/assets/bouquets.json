@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Rose Bouquet",
+    "image_link": "https://www.1800flowers.com/media/product/1800flowers/classic-12-red-roses/classic-12-red-roses.jpg",
+    "price": 49.99,
+    "detail_information": "This bouquet of 12 red roses is a classic choice for any occasion. The roses are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 2,
+    "name": "Sunny Sunflower Bouquet",
+    "image_link": "https://www.ftd.com/media/product/ftd/sunny-sunflowers-bouquet/sunny-sunflowers-bouquet.jpg",
+    "price": 69.99,
+    "detail_information": "This bouquet of sunflowers is sure to brighten anyone's day. The sunflowers are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 3,
+    "name": "Elegant Lily Bouquet",
+    "image_link": "https://www.teleflora.com/media/product/teleflora/elegant-lily-bouquet/elegant-lily-bouquet.jpg",
+    "price": 99.99,
+    "detail_information": "This bouquet of lilies is perfect for a special occasion. The lilies are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 4,
+    "name": "Mixed Flower Bouquet",
+    "image_link": "https://www.fromyouflowers.com/media/product/fromyouflowers/mixed-flower-bouquet/mixed-flower-bouquet.jpg",
+    "price": 79.99,
+    "detail_information": "This bouquet of mixed flowers is a beautiful choice for any occasion. The bouquet includes a variety of flowers, such as roses, lilies, sunflowers, and daisies."
+  },
+  {
+    "id": 5,
+    "name": "Exotic Orchids Bouquet",
+    "image_link": "https://www.bloomnation.com/media/product/bloomnation/exotic-orchids-bouquet/exotic-orchids-bouquet.jpg",
+    "price": 129.99,
+    "detail_information": "This bouquet of exotic orchids is sure to impress. The orchids are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 6,
+    "name": "Rustic Wildflower Bouquet",
+    "image_link": "https://www.urbanfarmerflowers.com/media/product/urbanfarmerflowers/rustic-wildflower-bouquet/rustic-wildflower-bouquet.jpg",
+    "price": 49.99,
+    "detail_information": "This bouquet of wildflowers is a beautiful and natural choice. The wildflowers are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 7,
+    "name": "Modern Succulent Bouquet",
+    "image_link": "https://www.bouqs.com/media/product/bouqs/modern-succulent-bouquet/modern-succulent-bouquet.jpg",
+    "price": 69.99,
+    "detail_information": "This bouquet of succulents is a unique and modern choice. The succulents are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 8,
+    "name": "Vintage Peony Bouquet",
+    "image_link": "https://www.farmgirlflowers.com/media/product/farmgirlflowers/vintage-peony-bouquet/vintage-peony-bouquet.jpg",
+    "price": 99.99,
+    "detail_information": "This bouquet of peonies is a classic and elegant choice. The peonies are arranged in a vase with greenery and baby's breath."
+  },
+  {
+    "id": 9,
+    "name": "Boho Hydrangea Bouquet",
+    "image_link": "https://www.bouqs.com/media/product/bouqs/boho-hydrangea-bouquet/boho-hydrangea-bouquet.jpg",
+    "price": 79.99,
+    "detail_information": "This bouquet of hydrangeas is a beautiful and bohemian choice"
+  }
+]
