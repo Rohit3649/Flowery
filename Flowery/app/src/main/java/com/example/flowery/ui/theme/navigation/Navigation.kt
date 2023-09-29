@@ -8,13 +8,14 @@ import com.example.flowery.ui.theme.screens.CartScreen
 import com.example.flowery.ui.theme.screens.HomeScreen
 import com.example.flowery.ui.theme.screens.HomeScreen2
 import com.example.flowery.ui.theme.screens.ProductDetailScreen
+import com.example.flowery.ui.theme.screens.ProductDetailScreen2
 import com.example.flowery.ui.theme.screens.StartScreen
 
 @Composable
 fun Navigation() {
     val navHostController = rememberNavController()
 
-    NavHost(navController = navHostController, startDestination = Home2) {
+    NavHost(navController = navHostController, startDestination = ProductDetail2) {
         composable(route = Start) {
             StartScreen(navHostController)
         }
@@ -30,6 +31,9 @@ fun Navigation() {
         composable(route = Home2) {
             HomeScreen2(navHostController)
         }
+        composable(route = ProductDetail2) {
+            ProductDetailScreen2(navHostController)
+        }
     }
 }
 
@@ -38,3 +42,4 @@ const val Home = "HomeScreen"
 const val ProductDetail = "ProductDetailScreen"
 const val Cart = "CartScreen"
 const val Home2 = "HomeScreen2"
+const val ProductDetail2 = "ProductDetailScreen2"

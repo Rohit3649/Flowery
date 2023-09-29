@@ -85,7 +85,6 @@ fun HomeScreen2(navHostController: NavHostController) {
                 searchText = it
             }
             SpacerHeight(30.dp)
-            //CategoryHeaderComponent()
             CommonRowHeader("Categories", "See All")
             CategoryImageComponent()
             SpacerHeight()
