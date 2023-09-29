@@ -50,6 +50,7 @@ import com.example.flowery.ui.theme.Pink
 import com.example.flowery.ui.theme.PinkLight
 import com.example.flowery.ui.theme.component.ImageComponent
 import com.example.flowery.ui.theme.component.TextComponentString
+import com.example.flowery.ui.theme.navigation.Cart
 
 @Composable
 fun ProductDetailScreen(
@@ -70,7 +71,7 @@ fun ProductDetailScreen(
                 navHostController.navigateUp()
             }
             SpacerHeight(30.dp)
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(modifier = Modifier.padding(bottom = 55.dp).fillMaxSize()) {
                 item {
                     ShowProduct(flower)
                     ProductDescription(flower)
@@ -82,7 +83,7 @@ fun ProductDetailScreen(
                 .padding(10.dp)
                 .align(Alignment.BottomCenter)
         ) {
-
+            navHostController.navigate(Cart)
         }
     }
 }
@@ -133,7 +134,7 @@ fun ProductDescription(
         Spacer(modifier = Modifier.height(15.dp))
         TextComponentString(
             text = flower.detailInformation,
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.W400,
         )
     }
@@ -151,13 +152,12 @@ private fun ButtonComponent(
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.White,
-            containerColor = Pink
+            containerColor = PinkLight
         ),
         shape = RoundedCornerShape(37.dp),
         contentPadding = PaddingValues(vertical = 10.dp),
         elevation = ButtonDefaults.buttonElevation(0.dp)
     ) {
-
         TextComponentString(text = "Add to Bag", fontSize = 20.sp, fontWeight = FontWeight.W500,)
     }
 
@@ -211,15 +211,15 @@ fun ShowProduct(
                         if (counter > 0)
                             counter--
                     }
-                    Spacer(modifier = Modifier.width(10.dp))
+                    Spacer(modifier = Modifier.width(20.dp))
                     TextComponentString(
                         text = "$counter",
                         fontSize = 25.sp,
                         fontWeight = FontWeight.W500,
-                        color = Pink,
+                        color = Color.Black,
                         modifier = Modifier.align(CenterVertically)
                     )
-                    Spacer(modifier = Modifier.width(10.dp))
+                    Spacer(modifier = Modifier.width(20.dp))
 
                     IconComponentDrawable(icon = R.drawable.add, size = 30.dp) {
                         counter++

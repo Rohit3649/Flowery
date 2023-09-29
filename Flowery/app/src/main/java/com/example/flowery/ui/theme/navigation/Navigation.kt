@@ -15,7 +15,7 @@ import com.example.flowery.ui.theme.screens.StartScreen
 fun Navigation() {
     val navHostController = rememberNavController()
 
-    NavHost(navController = navHostController, startDestination = ProductDetail2) {
+    NavHost(navController = navHostController, startDestination = Start) {
         composable(route = Start) {
             StartScreen(navHostController)
         }

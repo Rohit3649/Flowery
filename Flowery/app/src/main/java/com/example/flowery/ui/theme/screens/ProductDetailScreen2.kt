@@ -28,8 +28,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
@@ -74,6 +76,7 @@ import com.example.flowery.ui.theme.Pink
 import com.example.flowery.ui.theme.PinkLight
 import com.example.flowery.ui.theme.component.ImageComponent
 import com.example.flowery.ui.theme.component.TextComponentString
+import com.example.flowery.ui.theme.navigation.Cart
 import kotlin.math.absoluteValue
 
 @Composable
@@ -104,7 +107,7 @@ fun ProductDetailScreen2(navHostController: NavHostController) {
                 .background(Color.White, RoundedCornerShape(15.dp))
         ) {
             LazyColumn(
-                modifier = Modifier.padding(horizontal = 20.dp)
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 80.dp)
             ) {
                 item {
                     ProductInfoHeader()
@@ -128,13 +131,70 @@ fun ProductDetailScreen2(navHostController: NavHostController) {
                         }
                     }
                     SpacerHeight(5.dp)
-                    // commented temporary
-                    //ChipDetail(selectedChip)
+                    ChipDetail(selectedChip)
                     SpacerHeight(15.dp)
                     Divider(modifier = Modifier.fillMaxWidth(), color = Pink, thickness = 2.dp)
                     SpacerHeight(20.dp)
                     RecommendedProducts()
                 }
+            }
+            AddToBagComponent(modifier = Modifier.align(Alignment.BottomCenter)) {
+                navHostController.navigate(Cart)
+            }
+        }
+    }
+}
+
+@Composable
+fun AddToBagComponent(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Column(
+        modifier = modifier.padding(horizontal = 20.dp).fillMaxWidth()
+    ) {
+        Divider(modifier = Modifier.fillMaxWidth(), color = Pink, thickness = 2.dp)
+        Row(
+            modifier = Modifier
+                .padding(20.dp)
+                .fillMaxWidth()
+        ) {
+            TextButton(
+                onClick = {},
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .size(40.dp),
+                border = BorderStroke(1.dp, Pink),
+                elevation = ButtonDefaults.buttonElevation(0.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                )
+            ) {
+                IconComponentImageVector(
+                    icon = Icons.Default.FavoriteBorder,
+                    size = 20.dp,
+                    tint = Pink
+                )
+            }
+            SpacerWidth()
+            Button(
+                onClick = onClick,
+                modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth()
+                    .weight(0.7f),
+                shape = RoundedCornerShape(8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = PinkLight,
+                    contentColor = Color.White
+                ),
+                elevation = ButtonDefaults.buttonElevation(0.dp)
+            ) {
+                TextComponentString(
+                    text = "Add To Bag",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.W400
+                )
             }
         }
     }
@@ -148,8 +208,8 @@ fun RecommendedProducts() {
             fontSize = 23.sp,
             fontWeight = FontWeight.W600
         )
-        Box (
-            modifier = Modifier.padding(30.dp),
+        Box(
+            modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp),
             contentAlignment = Alignment.Center
         ) {
             ViewPagerComponent()
@@ -182,7 +242,7 @@ fun ViewPagerComponent() {
 
     HorizontalPager(
         state = pagerState,
-        contentPadding = PaddingValues(35.dp),
+        contentPadding = PaddingValues(horizontal = 35.dp),
         modifier = Modifier.fillMaxSize()
     ) { page ->
         Card(
@@ -212,7 +272,7 @@ fun ViewPagerComponent() {
                 .fillMaxWidth()
                 .aspectRatio(1f)
         ) {
-            Box (
+            Box(
                 modifier = Modifier.clickable {
                     activePhotoId = images[page]
                 }
@@ -220,10 +280,12 @@ fun ViewPagerComponent() {
 /*                ImageComponent(image = R.drawable.bouquet3,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop)*/
-                ImageComponent(image = images[page],
+                ImageComponent(
+                    image = images[page],
                     modifier = Modifier
                         .fillMaxSize(),
-                    contentScale = ContentScale.Crop)
+                    contentScale = ContentScale.Crop
+                )
             }
         }
     }

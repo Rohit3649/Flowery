@@ -313,10 +313,10 @@ fun Header() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 10.dp),
+            .padding(top = 20.dp, bottom = 10.dp),
         contentAlignment = Alignment.Center
     ) {
-        TextComponentString(text = "Our way for loving you back", fontSize = 20.sp)
+        TextComponentString(text = "Love you 3000", fontSize = 20.sp)
     }
 }
 

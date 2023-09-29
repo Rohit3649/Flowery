@@ -23,6 +23,7 @@ import com.example.flowery.R
 import com.example.flowery.ui.theme.backGround
 import com.example.flowery.ui.theme.component.TextComponentId
 import com.example.flowery.ui.theme.navigation.Home
+import com.example.flowery.ui.theme.navigation.Home2
 import com.example.flowery.ui.theme.textPinkColor
 import kotlinx.coroutines.delay
 
@@ -31,7 +32,7 @@ fun StartScreen(navHostController: NavHostController) {
 
     LaunchedEffect(key1 = Unit) {
         delay(2000)
-        navHostController.navigate(Home)
+        navHostController.navigate(Home2)
     }
 
     Box(

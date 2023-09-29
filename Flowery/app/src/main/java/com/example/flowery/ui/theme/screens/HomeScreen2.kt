@@ -67,6 +67,7 @@ import com.example.flowery.ui.theme.PurpleGrey40
 import com.example.flowery.ui.theme.backGround
 import com.example.flowery.ui.theme.component.ImageComponent
 import com.example.flowery.ui.theme.component.TextComponentString
+import com.example.flowery.ui.theme.navigation.ProductDetail2
 
 
 @Composable
@@ -86,7 +87,9 @@ fun HomeScreen2(navHostController: NavHostController) {
             }
             SpacerHeight(30.dp)
             CommonRowHeader("Categories", "See All")
-            CategoryImageComponent()
+            CategoryImageComponent() {
+                navHostController.navigate(ProductDetail2)
+            }
             SpacerHeight()
             CommonRowHeader("Popular", "See All")
             PopularImageComponent()
@@ -213,15 +216,17 @@ fun FilterChipEachRow(
 }
 
 @Composable
-fun CategoryImageComponent() {
+fun CategoryImageComponent(
+    onClick: (Flower) -> Unit
+) {
     LazyRow(
         verticalAlignment = Alignment.CenterVertically
     ) {
         items(items = listOfFlowers, key = {
             it.id
-        }) {
-            CategoryImageComponentItem(it) {
-
+        }) { it ->
+            CategoryImageComponentItem(it) { item ->
+                onClick(item)
             }
         }
     }
