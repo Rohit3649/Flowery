@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Rose",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/2/28/Rosa_%27New_Dawn%27.jpg",
+    "price": 2.5,
+    "detail_information": "Roses are one of the most popular flowers in the world. They are available in a wide variety of colors, including red, pink, yellow, white, and purple. Roses are often given as a symbol of love and appreciation.",
+    "isSelected": false
+  },
+  {
+    "id": 2,
+    "name": "Orchid",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/3/33/Phalaenopsis_amabilis_orchid.jpg",
+    "price": 5.0,
+    "detail_information": "Orchids are a type of tropical flower that is known for its exotic blooms. Orchids are available in a wide variety of colors, including white, pink, yellow, orange, and purple. Orchids are often given as a symbol of luxury and elegance.",
+    "isSelected": false
+  },
+  {
+    "id": 3,
+    "name": "Sunflower",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/3/39/Helianthus_annuus_sunflower.jpg",
+    "price": 1.5,
+    "detail_information": "Sunflowers are a type of daisy that is known for its large, yellow blooms. Sunflowers are often given as a symbol of happiness and optimism.",
+    "isSelected": false
+  },
+  {
+    "id": 4,
+    "name": "Tulip",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/9/94/Tulipa_keukenhof.jpg",
+    "price": 2.0,
+    "detail_information": "Tulips are a type of bulb flower that is known for its brightly colored blooms. Tulips are available in a variety of colors, including red, pink, yellow, white, and purple. Tulips are often given as a symbol of spring and new beginnings.",
+    "isSelected": false
+  },
+  {
+    "id": 5,
+    "name": "Lily",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lilium_longiflorum_var._eximium.jpg",
+    "price": 3.0,
+    "detail_information": "Lilies are another popular flower. They are known for their beautiful trumpet-shaped blooms. Lilies are available in a variety of colors, including white, pink, yellow, and orange. Lilies are often given as a symbol of purity and innocence.",
+    "isSelected": false
+  },
+  {
+    "id": 6,
+    "name": "Daisy",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Bellis_perennis_001.jpg",
+    "price": 1.0,
+    "detail_information": "Daisies are a type of wildflower that is known for its simple, white blooms. Daisies are often given as a symbol of innocence and purity.",
+    "isSelected": false
+  },
+  {
+    "id": 7,
+    "name": "Iris",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/9/99/Iris_versicolor_001.jpg",
+    "price": 2.5,
+    "detail_information": "Irises are a type of perennial flower that is known for its sword-shaped leaves and colorful blooms. Irises are available in a variety of colors, including blue, purple, yellow, and white. Irises are often given as a symbol of faith and hope.",
+    "isSelected": false
+  },
+  {
+    "id": 8,
+    "name": "Carnation",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Dianthus_caryophyllus_002.jpg",
+    "price": 2.0,
+    "detail_information": "Carnations are a type of flower that is known for its frilly petals and sweet fragrance",
+    "isSelected": false
+  },
+  {
+    "id": 9,
+    "name": "Gladiolus",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Gladiolus_communis_var._hortulanus.jpg",
+    "price": 3.0,
+    "detail_information": "Gladioli are a type of bulb flower that is known for its tall spikes of colorful blooms. Gladioli are available in a variety of colors, including red, pink, yellow, orange, and purple. Gladioli are often given as a symbol of strength and power.",
+    "isSelected": false
+  },
+  {
+    "id": 10,
+    "name": "Lily of the Valley",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Convallaria_majalis_001.jpg",
+    "price": 4.0,
+    "detail_information": "Lilies of the valley are a type of perennial flower that is known for its small, bell-shaped blooms. Lilies of the valley are available in a variety of colors, including white, pink, and purple. Lilies of the valley are often given as a symbol of sweetness and innocence.",
+    "isSelected": false
+  },
+  {
+    "id": 11,
+    "name": "Peony",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Paeonia_lactiflora_001.jpg",
+    "price": 5.0,
+    "detail_information": "Peonies are a type of perennial flower that is known for its large, showy blooms. Peonies are available in a variety of colors, including white, pink, yellow, red, and purple. Peonies are often given as a symbol of prosperity and good fortune.",
+    "isSelected": false
+  },
+  {
+    "id": 12,
+    "name": "Hydrangea",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Hydrangea_macrophylla_002.jpg",
+    "price": 4.0,
+    "detail_information": "Hydrangeas are a type of shrub that is known for its large, clusters of colorful blooms. Hydrangeas are available in a variety of colors, including blue, pink, white, and purple. Hydrangeas are often given as a symbol of gratitude and appreciation.",
+    "isSelected": false
+  },
+  {
+    "id": 13,
+    "name": "Gerbera Daisy",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Gerbera_jamesonii_001.jpg",
+    "price": 3.0,
+    "detail_information": "Gerbera daisies are a type of daisy that is known for its large, brightly colored blooms. Gerbera daisies are available in a variety of colors, including red, pink, yellow, orange, and purple. Gerbera daisies are often given as a symbol of joy and happiness.",
+    "isSelected": false
+  },
+  {
+    "id": 14,
+    "name": "Hyacinth",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Hyacinthus_orientalis_001.jpg",
+    "price": 3.0,
+    "detail_information": "Hyacinths are a type of bulb flower that is known for its sweet fragrance and colorful blooms. Hyacinths are available in a variety of colors, including blue, pink, white, and purple. Hyacinths are often given as a symbol of rebirth and renewal.",
+    "isSelected": false
+  },
+  {
+    "id": 15,
+    "name": "Calla Lily",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/6/67/Zantedeschia_aethiopica_001.jpg",
+    "price": 4.0,
+    "detail_information": "Calla lilies are a type of tuberous plant that is known for its elegant, trumpet-shaped blooms. Calla lilies are available in a variety of colors, including white, pink, yellow, and purple. Calla lilies are often given as a symbol of purity and innocence.",
+    "isSelected": false
+  }
+]

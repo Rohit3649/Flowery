@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Flowery</string>
+    <string name="flower_quote">Flowers are nature\'s poetry</string>
+    <string name="detail_screen_chip_description">"The name rose comes from Latin rosa, which was perhaps borrowed from Oscan, from Greek ῥόδον rhódon (Aeolic βρόδον wródon), itself borrowed from Old Persian wrd- (wurdi), related to Avestan varəδa, Sogdian ward, Parthian wâr."</string>
+    <string name="detail_screen_chip_material">The flowers of most species have five petals, with the exception of Rosa omeiensis and Rosa sericea, which usually have only four. Each petal is divided into two distinct lobes and is usually white or pink, though in a few species yellow or red</string>
+    <string name="detail_screen_chip_review">Many of the oldest definitive members of the Rosaceae are present in the Eocene upland floras of the Okanogan Highlands of northeastern Washington State and British Columbia, Canada. Over a dozen rosaceous taxa representing extant and extinct genera of all four traditionally recognized subfamilies are known from flowers, fruits, wood, pollen, and especially leaves.</string>
+</resources>
