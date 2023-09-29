@@ -3,11 +3,16 @@ package com.example.flowery.ui.theme.screens
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +21,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerScope
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -26,7 +34,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,6 +42,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,13 +50,17 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.lerp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.chattingappui.ui.theme.component.IconComponentDrawable
@@ -62,7 +75,6 @@ import com.example.flowery.ui.theme.PinkLight
 import com.example.flowery.ui.theme.component.ImageComponent
 import com.example.flowery.ui.theme.component.TextComponentString
 import kotlin.math.absoluteValue
-import androidx.compose.ui.util.lerp
 
 @Composable
 fun ProductDetailScreen2(navHostController: NavHostController) {
@@ -131,15 +143,96 @@ fun ProductDetailScreen2(navHostController: NavHostController) {
 @Composable
 fun RecommendedProducts() {
     Column {
-        TextComponentString(text = "Check Out other images", fontSize = 23.sp, fontWeight = FontWeight.W600)
-        ViewPagerComponent()
+        TextComponentString(
+            text = "Check Out other images",
+            fontSize = 23.sp,
+            fontWeight = FontWeight.W600
+        )
+        Box (
+            modifier = Modifier.padding(30.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            ViewPagerComponent()
+        }
+
     }
 
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ViewPagerComponent() {
+    val images = remember {
+        mutableStateListOf(
+            R.drawable.decoration2,
+            R.drawable.decoration3,
+            R.drawable.decoration4,
+            R.drawable.decoration5,
+            R.drawable.bouquet5,
+            R.drawable.bouquet6
+        )
+    }
+
+    val pagerState = rememberPagerState(
+        pageCount = {
+            images.size
+        })
+
+    var activePhotoId by rememberSaveable { mutableStateOf<Int?>(null) }
+
+    HorizontalPager(
+        state = pagerState,
+        contentPadding = PaddingValues(35.dp),
+        modifier = Modifier.fillMaxSize()
+    ) { page ->
+        Card(
+            Modifier
+                .graphicsLayer {
+
+                    val pageOffset =
+                        ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+
+                    // We animate the scaleX + scaleY, between 85% and 100%
+                    lerp(
+                        start = 0.85f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    ).also { scale ->
+                        scaleX = scale
+                        scaleY = scale
+                    }
+
+                    // We animate the alpha, between 50% and 100%
+                    alpha = lerp(
+                        start = 0.5f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    )
+                }
+                .fillMaxWidth()
+                .aspectRatio(1f)
+        ) {
+            Box (
+                modifier = Modifier.clickable {
+                    activePhotoId = images[page]
+                }
+            ) {
+/*                ImageComponent(image = R.drawable.bouquet3,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop)*/
+                ImageComponent(image = images[page],
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentScale = ContentScale.Crop)
+            }
+        }
+    }
+}
+
+//https://github.com/android/snippets/blob/3f009192432af7d8d045aa1e2c79ff5dc14f47b5/compose/snippets/src/main/java/com/example/compose/snippets/layouts/PagerSnippets.kt#L252-L278
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@Composable
+fun ViewPagerComponent1() {
     val images = remember {
         mutableStateListOf(
             R.drawable.bouquet1,
@@ -151,63 +244,152 @@ fun ViewPagerComponent() {
         )
     }
 
-    val pagerState = rememberPagerState(pageCount = {
-        images.size
-    })
+    val pagerState = rememberPagerState(
+        pageCount = {
+            images.size
+        })
 
-    HorizontalPager(state = pagerState) { page ->
+    HorizontalPager(
+        state = pagerState,
+        contentPadding = PaddingValues(horizontal = 80.dp),
+        modifier = Modifier.fillMaxSize(),
+        pageSize = PageSize.Fixed(250.dp),
+    ) { pageIndex ->
         Card(
-            Modifier
-                .size(250.dp)
+            modifier = Modifier
+                .size(400.dp)
                 .graphicsLayer {
-                    // Calculate the absolute offset for the current page from the
-                    // scroll position. We use the absolute value which allows us to mirror
-                    // any effects for both directions
-                    val pageOffset = (
-                            (pagerState.currentPage - page) + pagerState
-                                .currentPageOffsetFraction
-                            ).absoluteValue
+                    val pageOffset =
+                        ((pagerState.currentPage - pageIndex) + pagerState.currentPageOffsetFraction).absoluteValue
 
-                    // We animate the alpha, between 50% and 100%
+                    //Log.w("FLOWERY", "pageIndex $pageIndex AND pageOffset $pageOffset")
+                    lerp(
+                        start = 0.85f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    ).also { scale ->
+                        scaleX = scale
+                        scaleX = scale
+                    }
+
                     alpha = lerp(
                         start = 0.5f,
                         stop = 1f,
                         fraction = 1f - pageOffset.coerceIn(0f, 1f)
                     )
                 }
+                .fillMaxSize()
+                .aspectRatio(1f)
         ) {
-            ImageComponent(image = images[page])
+            Box(
+                contentAlignment = Alignment.Center,
+            ) {
+                ImageComponent(
+                    image = images[pageIndex],
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+                ProfilePictureCard(
+                    images[pageIndex],
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(16.dp)
+                        .offset {
+                            // calculate offset for the current page from the scroll position
+                            val offSet =
+                                (pagerState.currentPage - pageIndex) + pagerState.currentPageOffsetFraction
+
+                            IntOffset(
+                                x = (36.dp * offSet).roundToPx(),
+                                y = 0
+                            )
+                        }
+                )
+            }
         }
     }
 
+    /*    HorizontalPager(state = pagerState) { page ->
+            Card(
+                Modifier
+                    .size(250.dp)
+                    .graphicsLayer {
+                        // Calculate the absolute offset for the current page from the
+                        // scroll position. We use the absolute value which allows us to mirror
+                        // any effects for both directions
+                        val pageOffset = (
+                                (pagerState.currentPage - page) + pagerState
+                                    .currentPageOffsetFraction
+                                ).absoluteValue
 
-/*    val pagerState = rememberPagerState(pageCount = {
-        4
-    })
-    HorizontalPager(state = pagerState) { page ->
-        Card(
-            Modifier
-                .size(200.dp)
-                .graphicsLayer {
-                    // Calculate the absolute offset for the current page from the
-                    // scroll position. We use the absolute value which allows us to mirror
-                    // any effects for both directions
-                    val pageOffset = (
-                            (pagerState.currentPage - page) + pagerState
-                                .currentPageOffsetFraction
-                            ).absoluteValue
+                        // We animate the alpha, between 50% and 100%
+                        alpha = lerp(
+                            start = 0.5f,
+                            stop = 1f,
+                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                        )
+                    }
+            ) {
+                ImageComponent(image = images[page])
+            }
+        }*/
 
-                    // We animate the alpha, between 50% and 100%
-                    alpha = lerp(
-                        start = 0.5f,
-                        stop = 1f,
-                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                    )
-                }
-        ) {
-            ImageComponent(image = R.drawable.bouquet2)
-        }
-    }*/
+
+    /*    val pagerState = rememberPagerState(pageCount = {
+            4
+        })
+        HorizontalPager(state = pagerState) { page ->
+            Card(
+                Modifier
+                    .size(200.dp)
+                    .graphicsLayer {
+                        // Calculate the absolute offset for the current page from the
+                        // scroll position. We use the absolute value which allows us to mirror
+                        // any effects for both directions
+                        val pageOffset = (
+                                (pagerState.currentPage - page) + pagerState
+                                    .currentPageOffsetFraction
+                                ).absoluteValue
+
+                        // We animate the alpha, between 50% and 100%
+                        alpha = lerp(
+                            start = 0.5f,
+                            stop = 1f,
+                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                        )
+                    }
+            ) {
+                ImageComponent(image = R.drawable.bouquet2)
+            }
+        }*/
+}
+
+@Composable
+fun ProfilePictureCard(
+    @DrawableRes image: Int,
+    modifier: Modifier
+) {
+    Card(
+        modifier = modifier,
+        shape = CircleShape,
+        border = BorderStroke(4.dp, MaterialTheme.colorScheme.surface)
+    ) {
+        var offSetX by remember { mutableStateOf(0f) }
+        var offSetY by remember { mutableStateOf(0f) }
+        ImageComponent(
+            image = image,
+            modifier = Modifier
+                .size(72.dp)
+                .pointerInput(Unit) {
+                    detectDragGestures { change, dragAmount ->
+                        change.consume()
+                        offSetX += dragAmount.x
+                        offSetY += dragAmount.y
+                    }
+                },
+            contentScale = ContentScale.Crop
+        )
+    }
 }
 
 @Composable
